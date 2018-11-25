@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Persons.Core.Models
+namespace Persons.Core.Domain
 {
     [Table("Companies")]
     public class Company
