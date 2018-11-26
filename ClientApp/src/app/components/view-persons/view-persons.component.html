@@ -1,0 +1,33 @@
+<h2>Persons</h2>
+<p>
+  <button class="btn btn-success">Nowy</button>
+</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Nazwisko</th>
+      <th>Imię</th>
+      <th>Miejscowość</th>
+      <th>Wiek</th>
+      <th>Płeć</th>
+      <th>Firma</th>
+      <th>Oddział firmy</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of persons">
+      <td>{{ p.lastName }}</td>
+      <td>{{ p.firstName }}</td>
+      <td>{{ p.city }}</td>
+      <td>{{ p.age }}</td>
+      <td>{{ p.sex }}</td>
+      <td>{{ p.company }}</td>
+      <td>{{ p.companyBranch }}</td>
+      <td>
+        <button class="btn btn-primary">Edytuj</button>
+        <button class="btn btn-danger">Usuń</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
