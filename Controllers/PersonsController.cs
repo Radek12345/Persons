@@ -22,9 +22,9 @@ namespace Persons.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ViewPersonResource>> GetPersons()
+        public async Task<IEnumerable<ViewPersonResource>> GetPersonsAsync()
         {
-            var persons = await personRepository.GetPersonsEager();
+            var persons = await personRepository.GetPersonsEagerAsync();
             return mapper.Map<IEnumerable<Person>, IEnumerable<ViewPersonResource>>(persons);
         }
     }

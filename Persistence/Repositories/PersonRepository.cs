@@ -12,7 +12,7 @@ namespace Persons.Persistence.Repositories
         {
         }
 
-        public async Task<IEnumerable<Person>> GetPersonsEager()
+        public async Task<IEnumerable<Person>> GetPersonsEagerAsync()
         {
             return await Context.Persons
                 .Include(p => p.City)
