@@ -7,6 +7,8 @@ namespace Persons.Core.Repositories
 {
     public interface IPersonRepository : IRepository<Person>
     {
-        Task<IEnumerable<Person>> GetPersonsEagerAsync();  
+        Task<IEnumerable<Person>> GetPersonsEagerAsync();
+
+        Task<Person> GetPersonEagerAsync(int id);
     }
 }

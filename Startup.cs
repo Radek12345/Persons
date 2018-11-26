@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Persons.Core;
 using Persons.Core.Repositories;
 using Persons.Persistence;
 using Persons.Persistence.Repositories;
@@ -30,6 +31,7 @@ namespace Persons
             services.AddAutoMapper();
 
             services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

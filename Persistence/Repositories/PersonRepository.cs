@@ -20,5 +20,14 @@ namespace Persons.Persistence.Repositories
                     .ThenInclude(cb => cb.Company)
                 .ToListAsync();
         }
+
+        public async Task<Person> GetPersonEagerAsync(int id)
+        {
+            return await Context.Persons
+                .Include(p => p.City)
+                .Include(p => p.CompanyBranch)
+                    .ThenInclude(cb => cb.Company)
+                .SingleOrDefaultAsync(p => p.Id == id);
+        }
     }
 }

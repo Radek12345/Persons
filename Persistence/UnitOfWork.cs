@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using Persons.Core;
+using System.Threading.Tasks;
 
 namespace Persons.Persistence
 {
-    public class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly PersonsDbContext context;
 
