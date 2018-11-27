@@ -23,9 +23,9 @@ namespace Persons.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<SimpleTextResource> GetCities()
+        public IEnumerable<KeyValuePairResource> GetCities()
         {
-            return mapper.Map<IEnumerable<City>, IEnumerable<SimpleTextResource>>(repository.GetAll());
+            return mapper.Map<IEnumerable<City>, IEnumerable<KeyValuePairResource>>(repository.GetAll());
         }
     }
 }
