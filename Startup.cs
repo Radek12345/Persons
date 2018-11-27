@@ -30,6 +30,7 @@ namespace Persons
 
             services.AddAutoMapper();
 
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

@@ -1,0 +1,45 @@
+<h2>Dodaj osobę</h2>
+<p></p>
+<form>
+  <div class="form-group">
+    <label for="lastName">Nazwisko:</label>
+    <input type="text" class="form-control" id="lastName">
+  </div>
+  <div class="form-group">
+    <label for="firstName">Imię:</label>
+    <input type="text" class="form-control" id="firstName">
+  </div>
+  <div class="form-group">
+    <label for="city">Miejscowość:</label>
+    <select class="form-control" id="city">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="birthDate">Data urodzenia:</label>
+    <input type="date" class="form-control" id="birthDate">
+  </div>
+  <div class="form-group">
+    <label for="company">Firma:</label>
+    <select class="form-control" id="company">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="companyBranch">Oddział firmy:</label>
+    <select class="form-control" id="companyBranch">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Zapisz</button>
+  <button type="button" class="btn btn-light" [routerLink]="['/view-persons']">Anuluj</button>
+</form>

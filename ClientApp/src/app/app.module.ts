@@ -5,16 +5,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { ViewPersonsComponent } from './components/view-persons/view-persons.component';
 import { PersonService } from './services/person.service';
 import { HttpModule } from '@angular/http';
+import { PersonFormComponent } from './components/person-form/person-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
-    ViewPersonsComponent
+    ViewPersonsComponent,
+    PersonFormComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -23,7 +23,8 @@ import { HttpModule } from '@angular/http';
     HttpModule,
     RouterModule.forRoot([
       { path: '', component: ViewPersonsComponent, pathMatch: 'full' },
-      { path: 'view-persons', component: ViewPersonsComponent }
+      { path: 'view-persons', component: ViewPersonsComponent },
+      { path: 'person/new', component: PersonFormComponent }
     ])
   ],
   providers: [PersonService],

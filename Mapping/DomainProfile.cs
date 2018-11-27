@@ -17,6 +17,7 @@ namespace Persons.Mapping
                 .ForMember(vpr => vpr.CompanyBranch, opt => opt.MapFrom(p => p.CompanyBranch.Name));
 
             CreateMap<SavePersonResource, Person>();
+            CreateMap<City, SimpleTextResource>();
         }
 
         private int CalculateAge(DateTime birthDate)
