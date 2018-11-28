@@ -8,6 +8,6 @@ namespace Persons.Core.Repositories
 {
     public interface ICompanyRepository : IRepository<Company>
     {
-        Task<IEnumerable<Company>> GetCompaniesWithBranchesAsync();
+
     }
 }

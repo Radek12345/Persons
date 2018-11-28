@@ -1,6 +1,6 @@
 ﻿namespace Persons.Controllers.Resources
 {
-    public class ViewPersonResource
+    public class ReadPersonResource
     {
         public string LastName { get; set; }
         public string FirstName { get; set; }

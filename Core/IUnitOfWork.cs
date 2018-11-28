@@ -1,9 +1,7 @@
-﻿using System.Threading.Tasks;
-
-namespace Persons.Core
+﻿namespace Persons.Core
 {
     public interface IUnitOfWork
     {
-        Task CompleteAsync();
+        void Complete();
     }
 }

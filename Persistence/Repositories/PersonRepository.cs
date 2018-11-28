@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Persons.Core.Domain;
@@ -12,22 +13,22 @@ namespace Persons.Persistence.Repositories
         {
         }
 
-        public async Task<IEnumerable<Person>> GetPersonsEagerAsync()
+        public override IEnumerable<Person> GetAll()
         {
-            return await Context.Persons
+            return Context.Persons
                 .Include(p => p.City)
                 .Include(p => p.CompanyBranch)
                     .ThenInclude(cb => cb.Company)
-                .ToListAsync();
+                .ToList();
         }
 
-        public async Task<Person> GetPersonEagerAsync(int id)
+        public override Person Get(int id)
         {
-            return await Context.Persons
+            return Context.Persons
                 .Include(p => p.City)
                 .Include(p => p.CompanyBranch)
                     .ThenInclude(cb => cb.Company)
-                .SingleOrDefaultAsync(p => p.Id == id);
+                .SingleOrDefault(p => p.Id == id);
         }
     }
 }

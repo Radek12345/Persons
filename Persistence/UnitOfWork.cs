@@ -1,5 +1,4 @@
 ﻿using Persons.Core;
-using System.Threading.Tasks;
 
 namespace Persons.Persistence
 {
@@ -12,9 +11,9 @@ namespace Persons.Persistence
             this.context = context;
         }
 
-        public async Task CompleteAsync()
+        public void Complete()
         {
-            await context.SaveChangesAsync();
+            context.SaveChanges();
         }
     }
 }

@@ -14,9 +14,9 @@ namespace Persons.Persistence.Repositories
         {
         }
 
-        public async Task<IEnumerable<Company>> GetCompaniesWithBranchesAsync()
+        public override IEnumerable<Company> GetAll()
         {
-            return await Context.Companies.Include(c => c.Branches).ToListAsync();
+            return Context.Companies.Include(c => c.Branches).ToList();
         }
     }
 }

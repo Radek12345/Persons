@@ -9,7 +9,7 @@ namespace Persons.Mapping
     {
         public DomainProfile()
         {
-            CreateMap<Person, ViewPersonResource>()
+            CreateMap<Person, ReadPersonResource>()
                 .ForMember(vpr => vpr.Age, opt => opt.MapFrom(p => CalculateAge(p.BirthDate)))
                 .ForMember(vpr => vpr.Sex, opt => opt.MapFrom(p => CheckGender(p.FirstName)))
                 .ForMember(vpr => vpr.City, opt => opt.MapFrom(p => p.City.Name))
@@ -18,7 +18,7 @@ namespace Persons.Mapping
 
             CreateMap<SavePersonResource, Person>();
             CreateMap<City, KeyValuePairResource>();
-            CreateMap<Company, ViewCompanyResource>();
+            CreateMap<Company, ReadCompanyResource>();
         }
 
         private int CalculateAge(DateTime birthDate)

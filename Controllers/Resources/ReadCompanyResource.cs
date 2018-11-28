@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Persons.Controllers.Resources
 {
-    public class ViewCompanyResource : KeyValuePairResource
+    public class ReadCompanyResource : KeyValuePairResource
     {
         public ICollection<KeyValuePairResource> Branches { get; set; }
 
-        public ViewCompanyResource()
+        public ReadCompanyResource()
         {
             Branches = new Collection<KeyValuePairResource>();
         }
