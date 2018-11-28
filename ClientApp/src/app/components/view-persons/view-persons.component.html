@@ -26,7 +26,7 @@
       <td>{{ p.companyBranch }}</td>
       <td>
         <button class="btn btn-primary">Edytuj</button>
-        <button class="btn btn-danger">Usuń</button>
+        <button class="btn btn-danger" (click)="deletePerson(p.id)">Usuń</button>
       </td>
     </tr>
   </tbody>

@@ -16,4 +16,10 @@ export class ViewPersonsComponent implements OnInit {
   ngOnInit(): void {
     this.personService.getPersons().subscribe(persons => this.persons = persons);
   }
+
+  deletePerson(id: number) {
+    this.personService.deletePerson(id).subscribe(p => {
+      this.persons.splice(this.persons.map(p => p.id).indexOf(id), 1);
+    });
+  }
 }

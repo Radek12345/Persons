@@ -18,14 +18,18 @@ export class PersonService {
   }
 
   getCities() {
-    return this.http.get(this.citiesEndpoint).map(c => c.json());
+    return this.http.get(this.citiesEndpoint).map(r => r.json());
   }
 
   getCompanies() {
-    return this.http.get(this.companiesEndpoint).map(c => c.json());
+    return this.http.get(this.companiesEndpoint).map(r => r.json());
   }
 
   createPerson(person: SavePerson) {
-    return this.http.post(this.personsEndpoint, person).map(p => p.json());
+    return this.http.post(this.personsEndpoint, person).map(r => r.json());
   }
+
+  deletePerson(id: number) {
+    return this.http.delete(this.personsEndpoint + "/" + id).map(r => r.json());
+  } 
 }

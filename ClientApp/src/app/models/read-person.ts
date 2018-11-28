@@ -1,4 +1,5 @@
 export interface ReadPerson {
+  id: number;
   lastName: string;
   firstName: string;
   age: number;
