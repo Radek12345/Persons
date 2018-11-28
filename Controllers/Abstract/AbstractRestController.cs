@@ -22,7 +22,7 @@ namespace Persons.Controllers.Abstract
             repository.Add(entity);
             unitOfWork.Complete();
 
-            return Ok(mapper.Map<TSaveResource, TReadResource>(saveResource));
+            return Ok(mapper.Map<TEntity, TReadResource>(entity));
         }
 
         [HttpPut("{id}")]
@@ -36,7 +36,7 @@ namespace Persons.Controllers.Abstract
             mapper.Map<TSaveResource, TEntity>(saveResource, entity);
             unitOfWork.Complete();
 
-            return Ok(mapper.Map<TSaveResource, TReadResource>(saveResource)); ;
+            return Ok(mapper.Map<TEntity, TReadResource>(entity)); ;
         }
 
         [HttpDelete("{id}")]

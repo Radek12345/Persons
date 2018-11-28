@@ -1,4 +1,4 @@
-export interface ViewPerson {
+export interface ReadPerson {
   lastName: string;
   firstName: string;
   age: number;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewPerson } from '../../models/view-person';
+import { ReadPerson } from '../../models/read-person';
 import { PersonService } from '../../services/person.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { PersonService } from '../../services/person.service';
   templateUrl: './view-persons.component.html',
 })
 export class ViewPersonsComponent implements OnInit { 
-  persons: ViewPerson[];
+  persons: ReadPerson[];
 
   constructor(private personService: PersonService) {
 
