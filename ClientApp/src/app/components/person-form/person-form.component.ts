@@ -16,7 +16,7 @@ export class PersonFormComponent implements OnInit {
     id: undefined,
     lastName: "",
     firstName: "",
-    birthdate: "",
+    birthdate: new Date(),
     cityId: 0,
     companyId: 0,
     companyBranchId: 0
@@ -53,6 +53,7 @@ export class PersonFormComponent implements OnInit {
 
       if (this.isEditMode) {
         this.savePerson = data[2];
+        this.savePerson.birthdate = new Date(this.savePerson.birthdate);
         this.onCompanyChange();
       }
     });
@@ -64,6 +65,10 @@ export class PersonFormComponent implements OnInit {
   }
 
   submit() {
+    // dodanie jednego dnia do daty urodzenia,
+    // gdyż z jakiegoś powodu po wyborze na widoku zapisuje się z jednym dniem wstecz
+    this.savePerson.birthdate.setDate(this.savePerson.birthdate.getDate() + 1);
+
     let observable$ = this.isEditMode ? this.personService.updatePerson(this.savePerson)
       : this.personService.createPerson(this.savePerson);
 
