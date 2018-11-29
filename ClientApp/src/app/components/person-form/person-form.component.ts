@@ -4,6 +4,7 @@ import { SavePerson } from '../../models/save-person';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-person-form',
@@ -27,6 +28,8 @@ export class PersonFormComponent implements OnInit {
   isEditMode: boolean = false;
 
   constructor(private personService: PersonService, private route: ActivatedRoute, private router: Router) {
+    moment.locale('pl');
+
     route.params.subscribe(p => {
       if (p['id']) {
         this.savePerson.id = p['id'];
@@ -50,7 +53,6 @@ export class PersonFormComponent implements OnInit {
 
       if (this.isEditMode) {
         this.savePerson = data[2];
-        this.savePerson.birthdate = this.savePerson.birthdate.toString();
         this.onCompanyChange();
       }
     });

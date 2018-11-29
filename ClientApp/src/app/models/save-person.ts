@@ -2,7 +2,7 @@ export interface SavePerson {
   id: number;
   lastName: string;
   firstName: string;
-  birthdate: string;
+  birthdate: any;
   cityId: number;
   companyId: number;
   companyBranchId: number;

@@ -1,4 +1,5 @@
-<h2>Dodaj osobę</h2>
+<h2 *ngIf="!isEditMode">Dodaj osobę</h2>
+<h2 *ngIf="isEditMode">Edytuj osobę</h2>
 <p>{{ savePerson | json }}</p>
 <form #form="ngForm">
   <div class="form-group">
@@ -17,8 +18,16 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="birthDate">Data urodzenia:</label>
-    <input type="date" class="form-control" id="birthDate" name="birthdate" [(ngModel)]="savePerson.birthdate" required>
+    <label>Data urodzenia:</label>
+    <div class="border" style="width:360px;">
+      <dl-date-time-picker 
+                           name="birthDate"
+                           maxView="year"
+                           minView="day"
+                           startView="day"
+                           [(ngModel)]="savePerson.birthdate">
+      </dl-date-time-picker>
+    </div>
   </div>
   <div class="form-group">
     <label for="company">Firma:</label>

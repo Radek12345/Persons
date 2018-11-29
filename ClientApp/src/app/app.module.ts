@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
 
 import { AppComponent } from './app.component';
 import { ViewPersonsComponent } from './components/view-persons/view-persons.component';
@@ -26,7 +27,8 @@ import { PersonFormComponent } from './components/person-form/person-form.compon
       { path: 'view-persons', component: ViewPersonsComponent },
       { path: 'person/new', component: PersonFormComponent },
       { path: 'person/edit/:id', component: PersonFormComponent }
-    ])
+    ]),
+    DlDateTimePickerDateModule
   ],
   providers: [PersonService],
   bootstrap: [AppComponent]
