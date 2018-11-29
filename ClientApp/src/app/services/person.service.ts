@@ -17,6 +17,10 @@ export class PersonService {
     return this.http.get(this.personsEndpoint).map(r => r.json());
   }
 
+  getPerson(id: number) {
+    return this.http.get(this.personsEndpoint + "/" + id).map(r => r.json());
+  }
+
   getCities() {
     return this.http.get(this.citiesEndpoint).map(r => r.json());
   }
@@ -27,6 +31,10 @@ export class PersonService {
 
   createPerson(person: SavePerson) {
     return this.http.post(this.personsEndpoint, person).map(r => r.json());
+  }
+
+  updatePerson(person: SavePerson) {
+    return this.http.put(this.personsEndpoint + "/" + person.id, person).map(r => r.json());
   }
 
   deletePerson(id: number) {

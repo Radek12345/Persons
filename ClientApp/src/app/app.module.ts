@@ -24,7 +24,8 @@ import { PersonFormComponent } from './components/person-form/person-form.compon
     RouterModule.forRoot([
       { path: '', component: ViewPersonsComponent, pathMatch: 'full' },
       { path: 'view-persons', component: ViewPersonsComponent },
-      { path: 'person/new', component: PersonFormComponent }
+      { path: 'person/new', component: PersonFormComponent },
+      { path: 'person/edit/:id', component: PersonFormComponent }
     ])
   ],
   providers: [PersonService],

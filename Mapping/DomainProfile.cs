@@ -10,11 +10,12 @@ namespace Persons.Mapping
         public DomainProfile()
         {
             CreateMap<Person, ReadPersonResource>()
-                .ForMember(vpr => vpr.Age, opt => opt.MapFrom(p => CalculateAge(p.BirthDate)))
-                .ForMember(vpr => vpr.Sex, opt => opt.MapFrom(p => CheckGender(p.FirstName)))
-                .ForMember(vpr => vpr.City, opt => opt.MapFrom(p => p.City.Name))
-                .ForMember(vpr => vpr.Company, opt => opt.MapFrom(p => p.CompanyBranch.Company.Name))
-                .ForMember(vpr => vpr.CompanyBranch, opt => opt.MapFrom(p => p.CompanyBranch.Name));
+                .ForMember(rpr => rpr.Age, opt => opt.MapFrom(p => CalculateAge(p.BirthDate)))
+                .ForMember(rpr => rpr.Sex, opt => opt.MapFrom(p => CheckGender(p.FirstName)))
+                .ForMember(rpr => rpr.City, opt => opt.MapFrom(p => p.City.Name))
+                .ForMember(rpr => rpr.Company, opt => opt.MapFrom(p => p.CompanyBranch.Company.Name))
+                .ForMember(rpr => rpr.CompanyId, opt => opt.MapFrom(p => p.CompanyBranch.Company.Id))
+                .ForMember(rpr => rpr.CompanyBranch, opt => opt.MapFrom(p => p.CompanyBranch.Name));
 
             CreateMap<SavePersonResource, Person>();
             CreateMap<City, KeyValuePairResource>();

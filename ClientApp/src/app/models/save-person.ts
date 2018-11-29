@@ -1,4 +1,5 @@
 export interface SavePerson {
+  id: number;
   lastName: string;
   firstName: string;
   birthdate: string;
