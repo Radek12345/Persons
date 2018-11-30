@@ -8,6 +8,7 @@ import { PersonService } from '../../services/person.service';
 })
 export class ViewPersonsComponent implements OnInit { 
   persons: ReadPerson[];
+  personIdForDelete: number;
 
   constructor(private personService: PersonService) {
 
@@ -17,9 +18,9 @@ export class ViewPersonsComponent implements OnInit {
     this.personService.getPersons().subscribe(persons => this.persons = persons);
   }
 
-  deletePerson(id: number) {
-    this.personService.deletePerson(id).subscribe(p => {
-      this.persons.splice(this.persons.map(p => p.id).indexOf(id), 1);
+  deletePerson() {
+    this.personService.deletePerson(this.personIdForDelete).subscribe(p => {
+      this.persons.splice(this.persons.map(p => p.id).indexOf(this.personIdForDelete), 1);
     });
   }
 }

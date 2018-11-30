@@ -26,8 +26,29 @@
       <td>{{ p.companyBranch }}</td>
       <td>
         <button class="btn btn-primary" [routerLink]="['/person/edit/', p.id]">Edytuj</button>
-        <button class="btn btn-danger" (click)="deletePerson(p.id)">Usuń</button>
+        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" (click)="personIdForDelete = p.id">Usuń</button>
       </td>
     </tr>
   </tbody>
 </table>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Uwaga</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Czy na pewno chcesz usunąć tę osobę?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Anuluj</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deletePerson()">Usuń</button>
+      </div>
+    </div>
+  </div>
+</div>
