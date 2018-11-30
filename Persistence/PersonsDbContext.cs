@@ -9,6 +9,8 @@ namespace Persons.Persistence
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyBranch> CompanyBranches { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<Opinion> Opinions { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         public PersonsDbContext(DbContextOptions<PersonsDbContext> options)
             : base(options)
