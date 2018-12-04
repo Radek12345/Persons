@@ -19,7 +19,8 @@ namespace Persons.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] SaveOpinionResource resource) {
+        public IActionResult Create([FromBody] SaveOpinionResource resource) 
+        {
             var opinion = mapper.Map<SaveOpinionResource, Opinion>(resource);
             
             opinion.AdditionTime = DateTime.Now;
@@ -27,6 +28,20 @@ namespace Persons.Controllers
             unitOfWork.Complete();
 
             return Ok(mapper.Map<Opinion, ReadOpinionResource>(opinion));
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var opinion = repository.Get(id);
+
+            if (opinion == null)
+                return NotFound();
+
+            repository.Remove(opinion);
+            unitOfWork.Complete();
+
+            return Ok(id);
         }
     }
 }
