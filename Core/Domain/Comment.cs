@@ -15,6 +15,6 @@ namespace Persons.Core.Domain
         [Required]
         public DateTime AdditionTime { get; set; }
 
-        public int CommentId { get; set; }
+        public int OpinionId { get; set; }
     }
 }

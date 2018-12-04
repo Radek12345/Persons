@@ -18,7 +18,7 @@ namespace Persons.Core.Domain
 
         [StringLength(255)]
         [Required]
-        public string information { get; set; }
+        public string Information { get; set; }
 
         [Required]
         public DateTime AdditionTime { get; set; }
