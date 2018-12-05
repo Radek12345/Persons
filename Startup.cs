@@ -1,4 +1,5 @@
 using AutoMapper;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -36,7 +37,9 @@ namespace Persons
             services.AddScoped<IOpinionRepository, OpinionRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

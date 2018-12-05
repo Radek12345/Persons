@@ -21,6 +21,9 @@ namespace Persons.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] SaveCommentResource resource)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var comment = mapper.Map<SaveCommentResource, Comment>(resource);
             
             comment.AdditionTime = DateTime.Now;

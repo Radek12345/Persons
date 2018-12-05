@@ -22,6 +22,9 @@ namespace Persons.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] SaveOpinionResource resource) 
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var opinion = mapper.Map<SaveOpinionResource, Opinion>(resource);
             
             opinion.AdditionTime = DateTime.Now;
@@ -34,6 +37,9 @@ namespace Persons.Controllers
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] SaveOpinionResource resource)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var opinion = repository.Get(id);
 
             if (opinion == null)
@@ -49,6 +55,9 @@ namespace Persons.Controllers
         [HttpPatch("{id}")]
         public IActionResult PartialUpdate(int id, [FromBody] JsonPatchDocument<SaveOpinionResource> resourcePatch)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var opinion = repository.Get(id);
 
             if (opinion == null)
