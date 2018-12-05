@@ -1,5 +1,6 @@
 using System;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Persons.Controllers.Abstract;
 using Persons.Controllers.Resources;
@@ -28,6 +29,37 @@ namespace Persons.Controllers
             unitOfWork.Complete();
 
             return Ok(mapper.Map<Opinion, ReadOpinionResource>(opinion));
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, [FromBody] SaveOpinionResource resource)
+        {
+            var opinion = repository.Get(id);
+
+            if (opinion == null)
+                return NotFound();
+
+            mapper.Map<SaveOpinionResource, Opinion>(resource, opinion);
+            unitOfWork.Complete();
+
+            return Ok(mapper.Map<Opinion, ReadOpinionResource>(opinion)); ;
+        }
+
+        [HttpPatch("{id}")]
+        public IActionResult PartialUpdate(int id, [FromBody] JsonPatchDocument<SaveOpinionResource> resourcePatch)
+        {
+            var opinion = repository.Get(id);
+
+            if (opinion == null)
+                return NotFound();
+
+            var resource = mapper.Map<Opinion, SaveOpinionResource>(opinion);
+            resourcePatch.ApplyTo(resource);
+            mapper.Map<SaveOpinionResource, Opinion>(resource, opinion);
+
+            unitOfWork.Complete();
+
+            return Ok(mapper.Map<Opinion, ReadOpinionResource>(opinion)); ;
         }
 
         [HttpDelete("{id}")]
