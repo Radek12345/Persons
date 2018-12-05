@@ -11,10 +11,10 @@ using Persons.Core.Repositories;
 namespace Persons.Controllers
 {
     [Route("/api/opinions")]
-    public class OpinionsController : AbstractReadOnlyRestController<IRepository<Opinion>, Opinion,
+    public class OpinionsController : AbstractReadOnlyRestController<IOpinionRepository, Opinion,
         ReadOpinionResource>
     {
-        public OpinionsController(IRepository<Opinion> repository, IMapper mapper, IUnitOfWork unitOfWork) 
+        public OpinionsController(IOpinionRepository repository, IMapper mapper, IUnitOfWork unitOfWork) 
             : base(repository, mapper, unitOfWork)
         {
         }
@@ -40,6 +40,7 @@ namespace Persons.Controllers
                 return NotFound();
 
             mapper.Map<SaveOpinionResource, Opinion>(resource, opinion);
+            opinion.LastEditTime = DateTime.Now;
             unitOfWork.Complete();
 
             return Ok(mapper.Map<Opinion, ReadOpinionResource>(opinion)); ;
@@ -56,6 +57,8 @@ namespace Persons.Controllers
             var resource = mapper.Map<Opinion, SaveOpinionResource>(opinion);
             resourcePatch.ApplyTo(resource);
             mapper.Map<SaveOpinionResource, Opinion>(resource, opinion);
+            
+            opinion.LastEditTime = DateTime.Now;
 
             unitOfWork.Complete();
 

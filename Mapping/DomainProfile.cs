@@ -23,6 +23,8 @@ namespace Persons.Mapping
             CreateMap<SaveOpinionResource, Opinion>();
             CreateMap<Opinion, ReadOpinionResource>();
             CreateMap<Opinion, SaveOpinionResource>();
+            CreateMap<SaveCommentResource, Comment>();
+            CreateMap<Comment, ReadCommentResource>();
         }
 
         private int CalculateAge(DateTime birthDate)
